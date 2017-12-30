@@ -1,16 +1,14 @@
 import React from 'react';
+// import { render } from 'react-dom';
 import PropTypes from 'prop-types';
-import Hello from './containers/Hello';
+import Drawer from './components/Drawer';
+
 
 const App = props => (
-  <div>
-    <h1>React</h1>
-      -----------------------------
-    <Hello />
-    <div>
-      {props.children}
-    </div>
-  </div>
+  <Drawer>
+    {props.children}
+
+  </Drawer>
 );
 
 App.propTypes = {
