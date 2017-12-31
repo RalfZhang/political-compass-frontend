@@ -18,7 +18,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     height: 430,
-    marginTop: theme.spacing.unit * 3,
+    // marginTop: theme.spacing.unit * 3,
     zIndex: 1,
     overflow: 'hidden',
   },
@@ -119,7 +119,7 @@ class ResponsiveDrawer extends React.Component {
               {drawer}
             </Drawer>
           </Hidden>
-          <Hidden smDown implementation="css">
+          <Hidden mdDown implementation="css">
             <Drawer
               type="permanent"
               open
