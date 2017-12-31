@@ -17,40 +17,44 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: '100%',
-    height: 430,
+    // minHeight: '100vh',
     // marginTop: theme.spacing.unit * 3,
     zIndex: 1,
     overflow: 'hidden',
   },
   appFrame: {
-    position: 'relative',
+    // position: 'relative',
     display: 'flex',
+    minHeight: '100vh',
     width: '100%',
     height: '100%',
+    backgroundColor: theme.palette.background.default,
   },
   appBar: {
-    position: 'absolute',
+    // position: 'absolute',
     marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
   navIconHide: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'none',
     },
   },
   drawerHeader: theme.mixins.toolbar,
+  drawerDocked: {
+    width: drawerWidth,
+  },
   drawerPaper: {
     width: 250,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       width: drawerWidth,
-      position: 'relative',
+      // position: 'relative',
       height: '100%',
     },
   },
   content: {
-    backgroundColor: theme.palette.background.default,
     width: '100%',
     padding: theme.spacing.unit * 3,
     height: 'calc(100% - 56px)',
@@ -103,7 +107,7 @@ class ResponsiveDrawer extends React.Component {
               </Typography>
             </Toolbar>
           </AppBar>
-          <Hidden mdUp>
+          <Hidden lgUp>
             <Drawer
               type="temporary"
               anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -119,11 +123,12 @@ class ResponsiveDrawer extends React.Component {
               {drawer}
             </Drawer>
           </Hidden>
-          <Hidden mdDown implementation="css">
+          <Hidden lgDown>
             <Drawer
               type="permanent"
               open
               classes={{
+                docked: classes.drawerDocked,
                 paper: classes.drawerPaper,
               }}
             >
@@ -131,6 +136,18 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
           <main className={classes.content}>
+            2333
+            <br />
+            2333333333333333333333333333333333333333333333333333333333333333
+            <br />
+            2333
+            <br />
+            2333
+            <br />
+            2333
+            <br />
+            2333
+            <br />
             2333
             {this.props.children}
           </main>
