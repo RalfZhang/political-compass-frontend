@@ -17,13 +17,10 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: '100%',
-    // minHeight: '100vh',
-    // marginTop: theme.spacing.unit * 3,
     zIndex: 1,
     overflow: 'hidden',
   },
   appFrame: {
-    // position: 'relative',
     display: 'flex',
     minHeight: '100vh',
     width: '100%',
@@ -31,7 +28,6 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   appBar: {
-    // position: 'absolute',
     marginLeft: drawerWidth,
     [theme.breakpoints.up('lg')]: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -50,7 +46,6 @@ const styles = theme => ({
     width: 250,
     [theme.breakpoints.up('lg')]: {
       width: drawerWidth,
-      // position: 'relative',
       height: '100%',
     },
   },
@@ -63,6 +58,10 @@ const styles = theme => ({
       height: 'calc(100% - 64px)',
       marginTop: 64,
     },
+  },
+  wrap: {
+    maxWidth: 900,
+    margin: 'auto',
   },
 });
 
@@ -77,8 +76,6 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    console.log('--------', classes, theme);
-
     const drawer = (
       <div>
         <div className={classes.drawerHeader} />
@@ -136,20 +133,9 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
           <main className={classes.content}>
-            2333
-            <br />
-            2333333333333333333333333333333333333333333333333333333333333333
-            <br />
-            2333
-            <br />
-            2333
-            <br />
-            2333
-            <br />
-            2333
-            <br />
-            2333
-            {this.props.children}
+            <div className={classes.wrap}>
+              {this.props.children}
+            </div>
           </main>
         </div>
       </div>
