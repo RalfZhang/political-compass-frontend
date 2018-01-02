@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import App from '../App';
 import MyLink from '../components/MyLink';
+import Question from '../containers/Question';
 
 const RouteNest = props => (
   <Route
@@ -25,6 +26,7 @@ RouteNest.propTypes = {
 const Routers = () => (
   <Router>
     <RouteNest path="/" component={App}>
+      <RouteNest path="/" component={Question} />
       <RouteNest path="/link" component={MyLink} />
     </RouteNest>
   </Router>
