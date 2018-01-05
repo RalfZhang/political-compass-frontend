@@ -16,7 +16,11 @@ const config = {
     hot: true,
     hotOnly: false,
     open: true,
-    proxy: {},
+    proxy: {
+      '/api': {
+        target: 'http://pub.rfc.ralfz.com:8081'
+      }
+    },
     publicPath: '/',
     quiet: true, // necessary for FriendlyErrorsPlugin
     historyApiFallback: true,
