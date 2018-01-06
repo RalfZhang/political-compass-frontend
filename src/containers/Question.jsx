@@ -1,7 +1,10 @@
 import React from 'react';
 
 class Quetion extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   render() {
     return (
