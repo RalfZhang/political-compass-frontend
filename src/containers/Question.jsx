@@ -10,7 +10,6 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      /*
       questions: [
         {
           content: '如果人民没有受过民主教育，他们是不应该拥有普选权的。',
@@ -1884,14 +1883,15 @@ class Question extends React.Component {
           ],
         },
       ],
-      */
+      index: 0,
+      answers: [],
     };
   }
 
   render() {
     return (
       <div>
-        By RalfZ
+        {this.state.questions[this.state.index].content}
       </div>
     );
   }
