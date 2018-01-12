@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import ChoiceQuestion from './ChoiceQuestion';
 
 const styles = () => ({
 });
@@ -1884,7 +1885,7 @@ class Question extends React.Component {
         },
       ],
       index: 0,
-      answers: [],
+      // answers: [],
     };
   }
 
@@ -1892,6 +1893,7 @@ class Question extends React.Component {
     return (
       <div>
         {this.state.questions[this.state.index].content}
+        {ChoiceQuestion}
       </div>
     );
   }
