@@ -1892,8 +1892,9 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        {this.state.questions[this.state.index].content}
-        {ChoiceQuestion}
+        <ChoiceQuestion
+          data={this.state.questions[this.state.index]}
+        />
       </div>
     );
   }
