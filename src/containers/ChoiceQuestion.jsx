@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
 
 const styles = () => ({});
 
@@ -12,9 +13,17 @@ class ChoiceQuetion extends React.Component {
     };
   }
   render() {
+    const buttons = this.props.data.choice_group.map(e => (
+      <Button raised color="primary">
+        {e.content}
+      </Button>
+    ));
     return (
       <div>
-        {this.props.data.short}
+        {this.props.data.content}
+        <div>
+          {buttons}
+        </div>
       </div>
     );
   }
