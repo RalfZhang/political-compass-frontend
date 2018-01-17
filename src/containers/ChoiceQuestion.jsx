@@ -14,7 +14,7 @@ class ChoiceQuetion extends React.Component {
   }
   render() {
     const buttons = this.props.data.choice_group.map(e => (
-      <Button raised color="primary">
+      <Button raised color="primary" onClick={() => this.props.onClick(e.content)}>
         {e.content}
       </Button>
     ));

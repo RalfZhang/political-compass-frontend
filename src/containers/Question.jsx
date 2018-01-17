@@ -1889,11 +1889,16 @@ class Question extends React.Component {
     };
   }
 
+  handleChoice(text) {
+    console.log(text);
+  }
+
   render() {
     return (
       <div>
         <ChoiceQuestion
           data={this.state.questions[this.state.index]}
+          onClick={e => this.handleChoice(e)}
         />
       </div>
     );
