@@ -30,7 +30,8 @@ class ChoiceQuetion extends React.Component {
 }
 
 ChoiceQuetion.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 
