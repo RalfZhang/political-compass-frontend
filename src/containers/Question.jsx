@@ -1894,12 +1894,15 @@ class Question extends React.Component {
   }
 
   render() {
+    const questionDomList = this.state.questions.map((el, i) => (
+      <ChoiceQuestion
+        data={this.state.questions[this.state.index]}
+        onClick={e => this.handleChoice(e)}
+      />
+    ));
     return (
       <div>
-        <ChoiceQuestion
-          data={this.state.questions[this.state.index]}
-          onClick={e => this.handleChoice(e)}
-        />
+        {questionDomList}
       </div>
     );
   }
