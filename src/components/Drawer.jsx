@@ -146,7 +146,10 @@ class ResponsiveDrawer extends React.Component {
 ResponsiveDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]).isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);

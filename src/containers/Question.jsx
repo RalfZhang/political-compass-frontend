@@ -7,9 +7,6 @@ const styles = () => ({
   show: {
     display: 'block',
   },
-  hide: {
-    display: 'none',
-  },
 });
 
 
@@ -1890,26 +1887,33 @@ class Question extends React.Component {
           ],
         },
       ],
-      index: 0,
+      index: 2,
       // answers: [],
     };
   }
 
-  handleChoice(text) {
+  handleChoice(text, index) {
     console.log(text);
+    this.setState(Object.assign({}, this.state, {
+      index: index + 1,
+    }));
   }
 
   render() {
     const { classes } = this.props;
     const questionDomList = this.state.questions.map((el, i) => (
       <ChoiceQuestion
-        className={i === this.state.index ? classes.show : classes.hide}
-        data={this.state.questions[this.state.index]}
+        option={{
+          index: i,
+          isShow: i === this.state.index,
+        }}
+        data={el}
         onClick={e => this.handleChoice(e)}
+        key={el.q_id}
       />
     ));
     return (
-      <div>
+      <div className={classes.show}>
         {questionDomList}
       </div>
     );

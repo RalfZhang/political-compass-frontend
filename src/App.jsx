@@ -7,12 +7,14 @@ import Drawer from './components/Drawer';
 const App = props => (
   <Drawer>
     {props.children}
-
   </Drawer>
 );
 
 App.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element,
+  ]).isRequired,
 };
 
 export default App;
