@@ -1,9 +1,15 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ChoiceQuestion from './ChoiceQuestion';
 
 const styles = () => ({
+  show: {
+    display: 'block',
+  },
+  hide: {
+    display: 'none',
+  },
 });
 
 
@@ -1894,8 +1900,10 @@ class Question extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     const questionDomList = this.state.questions.map((el, i) => (
       <ChoiceQuestion
+        className={i === this.state.index ? classes.show : classes.hide}
         data={this.state.questions[this.state.index]}
         onClick={e => this.handleChoice(e)}
       />
@@ -1907,5 +1915,9 @@ class Question extends React.Component {
     );
   }
 }
+
+Question.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles, { withTheme: true })(Question);

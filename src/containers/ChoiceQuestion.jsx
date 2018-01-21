@@ -5,29 +5,21 @@ import Button from 'material-ui/Button';
 
 const styles = () => ({});
 
-class ChoiceQuetion extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      answer: null,
-    };
-  }
-  render() {
-    const buttons = this.props.data.choice_group.map(e => (
-      <Button raised color="primary" onClick={() => this.props.onClick(e.content)}>
-        {e.content}
-      </Button>
-    ));
-    return (
+const ChoiceQuetion = (props) => {
+  const buttons = props.data.choice_group.map(e => (
+    <Button raised color="primary" onClick={() => props.onClick(e.content)}>
+      {e.content}
+    </Button>
+  ));
+  return (
+    <div>
+      {props.data.content}
       <div>
-        {this.props.data.content}
-        <div>
-          {buttons}
-        </div>
+        {buttons}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 ChoiceQuetion.propTypes = {
   data: PropTypes.object.isRequired,
