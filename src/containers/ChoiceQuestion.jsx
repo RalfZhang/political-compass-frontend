@@ -4,6 +4,17 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 
 const styles = () => ({
+  base: {
+    position: 'absolute',
+    transition: 'all 0.5s',
+    left: 0,
+  },
+  left: {
+    left: '-100%',
+  },
+  right: {
+    left: '100%',
+  },
   show: {
     display: 'block',
   },
@@ -25,7 +36,7 @@ const ChoiceQuetion = (props) => {
     </Button>
   ));
   return (
-    <div className={option.isShow ? classes.show : classes.hide}>
+    <div className={`base ${option.progress > option.index ? 'left' : ''}${option.progress < option.index ? 'right' : ''}`}>
       {props.data.content}
       <div>
         {buttons}

@@ -5,6 +5,7 @@ import ChoiceQuestion from './ChoiceQuestion';
 
 const styles = () => ({
   show: {
+    position: 'relative',
     display: 'block',
   },
 });
@@ -1892,10 +1893,10 @@ class Question extends React.Component {
     };
   }
 
-  handleChoice(text, index) {
+  handleChoice(text) {
     console.log(text);
     this.setState({
-      index: index + 1,
+      index: this.state.index + 1,
     });
   }
 
@@ -1905,10 +1906,11 @@ class Question extends React.Component {
       <ChoiceQuestion
         option={{
           index: i,
-          isShow: i === this.state.index,
+          // isShow: i === this.state.index,
+          progress: this.state.index,
         }}
         data={el}
-        onClick={(e, i) => this.handleChoice(e, i)}
+        onClick={e => this.handleChoice(e)}
         key={el.q_id}
       />
     ));
