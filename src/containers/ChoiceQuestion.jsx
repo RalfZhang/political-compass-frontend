@@ -5,11 +5,15 @@ import Button from 'material-ui/Button';
 
 const styles = () => ({
   base: {
+    background: '#ccc',
     position: 'absolute',
     transition: 'all 0.3s',
     left: 0,
     width: '100%',
     top: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   left: {
     // top: '300px',
