@@ -6,7 +6,7 @@ import Button from 'material-ui/Button';
 const styles = () => ({
   base: {
     background: '#ccc',
-    position: 'absolute',
+    position: 'relative',
     transition: 'all 0.3s',
     left: 0,
     width: '100%',
@@ -18,8 +18,10 @@ const styles = () => ({
   left: {
     // top: '300px',
     left: '-200%',
+    position: 'absolute',
   },
   right: {
+    position: 'absolute',
     left: '200%',
   },
   show: {
