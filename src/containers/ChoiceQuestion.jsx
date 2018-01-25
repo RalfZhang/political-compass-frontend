@@ -5,7 +5,7 @@ import Button from 'material-ui/Button';
 
 const styles = () => ({
   base: {
-    background: '#ccc',
+    // background: '#ccc',
     position: 'relative',
     transition: 'all 0.3s',
     left: 0,
@@ -46,7 +46,7 @@ const ChoiceQuetion = (props) => {
   ));
   return (
     <div className={`${classes.base} ${option.progress > option.index ? classes.left : ''}${option.progress < option.index ? classes.right : ''}`}>
-      {props.data.content}
+      <p>{props.data.content}</p>
       <div>
         {buttons}
       </div>
