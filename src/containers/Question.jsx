@@ -1887,8 +1887,13 @@ class Question extends React.Component {
         ],
       },
     ];
+    const answersStr = localStorage.getItem('answers');
+    let l = 0;
+    if (answersStr) {
+      l = JSON.parse(answersStr).length;
+    }
     this.state = {
-      index: 0,
+      index: l,
       // answers: [],
     };
   }
