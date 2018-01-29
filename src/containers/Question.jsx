@@ -1901,7 +1901,6 @@ class Question extends React.Component {
       value: v,
     });
     localStorage.setItem('answers', JSON.stringify(answersArr));
-    window.localStorage;
     this.setState({
       index: this.state.index + 1,
     });
