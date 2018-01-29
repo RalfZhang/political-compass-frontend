@@ -39,7 +39,7 @@ const ChoiceQuetion = (props) => {
       raised
       color="primary"
       key={e.value}
-      onClick={() => props.onClick(e.content, option.index)}
+      onClick={() => props.onClick(e.value, option.id)}
     >
       {e.content}
     </Button>

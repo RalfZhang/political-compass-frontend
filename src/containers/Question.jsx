@@ -1893,8 +1893,15 @@ class Question extends React.Component {
     };
   }
 
-  handleChoice(text) {
-    console.log(text);
+  handleChoice(v, id) {
+    const answersStr = localStorage.getItem('answers');
+    const answersArr = answersStr ? JSON.parse(answersStr) : [];
+    answersArr.push({
+      id,
+      value: v,
+    });
+    localStorage.setItem('answers', JSON.stringify(answersArr));
+    window.localStorage;
     this.setState({
       index: this.state.index + 1,
     });
@@ -1906,11 +1913,12 @@ class Question extends React.Component {
       <ChoiceQuestion
         option={{
           index: i,
+          id: el.q_id,
           // isShow: i === this.state.index,
           progress: this.state.index,
         }}
         data={el}
-        onClick={e => this.handleChoice(e)}
+        onClick={(v, id) => this.handleChoice(v, id)}
         key={el.q_id}
       />
     ));
