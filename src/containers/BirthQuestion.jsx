@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-
 import NumberFormat from 'react-number-format';
-// import Button from 'material-ui/Button';
+import Button from 'material-ui/Button';
 import Input from 'material-ui/Input';
 
 const styles = () => ({
@@ -68,10 +67,11 @@ class BirthQuestion extends React.Component {
     });
   }
   render() {
-    const { data } = this.props;
+    const {
+      data, option, classes, onClick,
+    } = this.props;
     return (
-
-      <div>
+      <div className={`${classes.base} ${option.progress > option.index ? classes.left : ''}${option.progress < option.index ? classes.right : ''}`}>
         <p>{data.content}</p>
         <div>
 
@@ -85,6 +85,14 @@ class BirthQuestion extends React.Component {
           }}
           />
         </div>
+        <Button
+          raised
+          color="primary"
+          onClick={() => onClick(this.state.num, option.id)}
+        >
+          确定
+        </Button>
+
       </div>
     );
   }
@@ -93,8 +101,9 @@ class BirthQuestion extends React.Component {
 
 BirthQuestion.propTypes = {
   data: PropTypes.object.isRequired,
-  // classes: PropTypes.object.isRequired,
-  // option: propTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  option: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, { withTheme: true })(BirthQuestion);
