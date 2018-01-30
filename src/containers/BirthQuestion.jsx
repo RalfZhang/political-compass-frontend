@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -5,7 +7,7 @@ import NumberFormat from 'react-number-format';
 import Button from 'material-ui/Button';
 import Input from 'material-ui/Input';
 
-const styles = () => ({
+const styles = theme => ({
   base: {
     // background: '#ccc',
     position: 'relative',
@@ -32,15 +34,36 @@ const styles = () => ({
   hide: {
     display: 'none',
   },
+  text: {
+    [theme.breakpoints.up('sm')]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    },
+  },
+  button: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: 20,
+      marginTop: 40,
+      width: 100,
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '40px auto',
+      display: 'block',
+      width: '80%',
+    },
+  },
 });
 
 
 function NumberFormatCustom(props) {
-  const { onChange, ...other } = props;
+  const { inputRef, onChange, ...other } = props;
 
   return (
     <NumberFormat
       {...other}
+      ref={inputRef}
       onValueChange={(values) => {
         onChange({
           target: {
@@ -53,6 +76,7 @@ function NumberFormatCustom(props) {
 }
 
 NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -72,7 +96,7 @@ class BirthQuestion extends React.Component {
     } = this.props;
     return (
       <div className={`${classes.base} ${option.progress > option.index ? classes.left : ''}${option.progress < option.index ? classes.right : ''}`}>
-        <p>{data.content}</p>
+        <p className={classes.text}>{data.content}</p>
         <div>
 
           <Input
@@ -86,6 +110,7 @@ class BirthQuestion extends React.Component {
           />
         </div>
         <Button
+          className={classes.button}
           raised
           color="primary"
           onClick={() => onClick(this.state.num, option.id)}

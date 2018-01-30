@@ -30,14 +30,24 @@ const styles = theme => ({
   hide: {
     display: 'none',
   },
-  button: {
+  text: {
     [theme.breakpoints.up('sm')]: {
-      margin: 10,
+      fontSize: 20,
     },
     [theme.breakpoints.down('sm')]: {
-      margin: 5,
+      fontSize: 16,
+    },
+  },
+  button: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: 20,
+      marginTop: 20,
+      width: 100,
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '15px auto',
       display: 'block',
-      width: '100%',
+      width: '80%',
     },
   },
 });
@@ -59,7 +69,7 @@ const ChoiceQuetion = (props) => {
   ));
   return (
     <div className={`${classes.base} ${option.progress > option.index ? classes.left : ''}${option.progress < option.index ? classes.right : ''}`}>
-      <p>{data.content}</p>
+      <p className={classes.text}>{data.content}</p>
       <div>
         {buttons}
       </div>
