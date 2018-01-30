@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 
-const styles = () => ({
+const styles = theme => ({
   base: {
     // background: '#ccc',
     position: 'relative',
@@ -30,6 +30,15 @@ const styles = () => ({
   hide: {
     display: 'none',
   },
+  button: {
+    [theme.breakpoints.up('sm')]: {
+      margin: 10,
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: 5,
+      display: 'block',
+    },
+  },
 });
 
 const ChoiceQuetion = (props) => {
@@ -38,6 +47,7 @@ const ChoiceQuetion = (props) => {
   } = props;
   const buttons = data.choice_group.map(e => (
     <Button
+      className={classes.button}
       raised
       color="primary"
       key={e.value}
