@@ -33,20 +33,22 @@ const styles = () => ({
 });
 
 const ChoiceQuetion = (props) => {
-  const { classes, option } = props;
-  const buttons = props.data.choice_group.map(e => (
+  const {
+    classes, option, data, onClick,
+  } = props;
+  const buttons = data.choice_group.map(e => (
     <Button
       raised
       color="primary"
       key={e.value}
-      onClick={() => props.onClick(e.value, option.id)}
+      onClick={() => onClick(e.value, option.id)}
     >
       {e.content}
     </Button>
   ));
   return (
     <div className={`${classes.base} ${option.progress > option.index ? classes.left : ''}${option.progress < option.index ? classes.right : ''}`}>
-      <p>{props.data.content}</p>
+      <p>{data.content}</p>
       <div>
         {buttons}
       </div>
@@ -56,7 +58,7 @@ const ChoiceQuetion = (props) => {
 
 ChoiceQuetion.propTypes = {
   data: PropTypes.object.isRequired,
-  // onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   option: PropTypes.object.isRequired,
 };
