@@ -37,6 +37,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: 5,
       display: 'block',
+      width: '100%',
     },
   },
 });
