@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ChoiceQuestion from './ChoiceQuestion';
+import BirthQuestion from './BirthQuestion';
 
 const styles = () => ({
   show: {
@@ -1893,7 +1894,7 @@ class Question extends React.Component {
       l = JSON.parse(answersStr).length;
     }
     this.state = {
-      index: l,
+      index: 50,
       // answers: [],
     };
   }
@@ -1913,19 +1914,37 @@ class Question extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const questionDomList = this.questions.map((el, i) => (
-      <ChoiceQuestion
-        option={{
-          index: i,
-          id: el.q_id,
-          // isShow: i === this.state.index,
-          progress: this.state.index,
-        }}
-        data={el}
-        onClick={(v, id) => this.handleChoice(v, id)}
-        key={el.q_id}
-      />
-    ));
+    const questionDomList = this.questions.map((el, i) => {
+      if (el.choice_group.length) {
+        return (
+          <ChoiceQuestion
+            option={{
+              index: i,
+              id: el.q_id,
+              // isShow: i === this.state.index,
+              progress: this.state.index,
+            }}
+            data={el}
+            onClick={(v, id) => this.handleChoice(v, id)}
+            key={el.q_id}
+          />
+
+        );
+      }
+      return (
+        <BirthQuestion
+          option={{
+            index: i,
+            id: el.q_id,
+            // isShow: i === this.state.index,
+            progress: this.state.index,
+          }}
+          data={el}
+          onClick={(v, id) => this.handleChoice(v, id)}
+          key={el.q_id}
+        />
+      );
+    });
     return (
       <div className={classes.show}>
         {questionDomList}
