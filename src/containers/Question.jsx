@@ -1915,30 +1915,15 @@ class Question extends React.Component {
   render() {
     const { classes } = this.props;
     const questionDomList = this.questions.map((el, i) => {
-      if (el.choice_group.length) {
-        return (
-          <ChoiceQuestion
-            option={{
+      const Comp = el.choice_group.length ? ChoiceQuestion : BirthQuestion;
+      return (
+        <Comp
+          option={{
               index: i,
               id: el.q_id,
               // isShow: i === this.state.index,
               progress: this.state.index,
             }}
-            data={el}
-            onClick={(v, id) => this.handleChoice(v, id)}
-            key={el.q_id}
-          />
-
-        );
-      }
-      return (
-        <BirthQuestion
-          option={{
-            index: i,
-            id: el.q_id,
-            // isShow: i === this.state.index,
-            progress: this.state.index,
-          }}
           data={el}
           onClick={(v, id) => this.handleChoice(v, id)}
           key={el.q_id}
