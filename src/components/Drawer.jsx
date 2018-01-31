@@ -52,11 +52,14 @@ const styles = theme => ({
   content: {
     width: '100%',
     padding: theme.spacing.unit * 3,
-    height: 'calc(100% - 56px)',
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 64px)',
-      marginTop: 64,
+    height: 'calc(100% - 64px)',
+    marginTop: 64,
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100% - 56px)',
+      marginTop: 56,
+    },
+    [theme.breakpoints.up('lg')]: {
+      marginLeft: drawerWidth,
     },
   },
   wrap: {
