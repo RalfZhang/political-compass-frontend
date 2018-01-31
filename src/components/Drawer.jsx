@@ -120,12 +120,11 @@ class ResponsiveDrawer extends React.Component {
               {drawer}
             </Drawer>
           </Hidden>
-          <Hidden lgDown>
+          <Hidden mdDown implementation="css">
             <Drawer
               type="permanent"
               open
               classes={{
-                docked: classes.drawerDocked,
                 paper: classes.drawerPaper,
               }}
             >
