@@ -35,20 +35,20 @@ const styles = theme => ({
     display: 'none',
   },
   text: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('xs')]: {
       fontSize: 20,
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       fontSize: 16,
     },
   },
   button: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('xs')]: {
       marginRight: 20,
       marginTop: 40,
       width: 100,
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       margin: '40px auto',
       display: 'block',
       width: '80%',
