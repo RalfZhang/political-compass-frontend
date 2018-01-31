@@ -42,7 +42,7 @@ const styles = theme => ({
     [theme.breakpoints.up('xs')]: {
       marginRight: 20,
       marginTop: 20,
-      width: 100,
+      minWidth: 100,
     },
     [theme.breakpoints.down('xs')]: {
       margin: '15px auto',
