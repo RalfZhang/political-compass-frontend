@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ChoiceQuestion from './ChoiceQuestion';
 import BirthQuestion from './BirthQuestion';
+import Position from './Position';
 
 const styles = () => ({
   show: {
@@ -1894,7 +1895,7 @@ class Question extends React.Component {
       l = JSON.parse(answersStr).length;
     }
     this.state = {
-      index: 50,
+      index: l,
       // answers: [],
     };
   }
@@ -1932,7 +1933,7 @@ class Question extends React.Component {
     });
     return (
       <div className={classes.show}>
-        {questionDomList}
+        {this.state.index === this.questions.length ? <Position /> : questionDomList}
       </div>
     );
   }
