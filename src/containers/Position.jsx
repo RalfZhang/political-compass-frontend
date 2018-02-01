@@ -19,9 +19,9 @@ const Position = () => {
   };
   return (
     <div>
-      <div>{getPositionByReg(/^q1\d\d$/)}</div>
-      <div>{getPositionByReg(/^q2\d\d$/)}</div>
-      <div>{getPositionByReg(/^q3\d\d$/)}</div>
+      <div>政治：{getPositionByReg(/^q1\d\d$/)}</div>
+      <div>文化：{getPositionByReg(/^q2\d\d$/)}</div>
+      <div>经济：{getPositionByReg(/^q3\d\d$/)}</div>
     </div>
   );
 };
