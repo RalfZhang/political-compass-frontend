@@ -18,11 +18,10 @@ const Position = () => {
     return arr.reduce((a, c) => a + c) / arr.length;
   };
   return (
-    <div>{answersArr.length}
+    <div>
       <div>{getPositionByReg(/^q1\d\d$/)}</div>
       <div>{getPositionByReg(/^q2\d\d$/)}</div>
       <div>{getPositionByReg(/^q3\d\d$/)}</div>
-
     </div>
   );
 };
