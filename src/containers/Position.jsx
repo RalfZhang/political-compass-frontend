@@ -9,6 +9,7 @@ const Position = () => {
       throw new Error('Length is 0');
     }
   } catch (error) {
+    console.log('[error] Position error. ',error);
     return (
       <div>Data Error</div>
     );
