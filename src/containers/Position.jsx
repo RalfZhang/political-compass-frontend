@@ -1,4 +1,5 @@
 import React from 'react';
+import Line from '../components/chart/Line';
 
 const Position = () => {
   let answersArr;
@@ -9,7 +10,7 @@ const Position = () => {
       throw new Error('Length is 0');
     }
   } catch (error) {
-    console.log('[error] Position error. ',error);
+    console.log('[error] Position error. ', error);
     return (
       <div>Data Error</div>
     );
@@ -23,6 +24,7 @@ const Position = () => {
       <div>政治：{getPositionByReg(/^q1\d\d$/)}</div>
       <div>文化：{getPositionByReg(/^q2\d\d$/)}</div>
       <div>经济：{getPositionByReg(/^q3\d\d$/)}</div>
+      <Line />
     </div>
   );
 };
