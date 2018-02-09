@@ -24,7 +24,24 @@ const Position = () => {
       <div>政治：{getPositionByReg(/^q1\d\d$/)}</div>
       <div>文化：{getPositionByReg(/^q2\d\d$/)}</div>
       <div>经济：{getPositionByReg(/^q3\d\d$/)}</div>
-      <Line />
+      <Line option={{
+        xAxis: new Array(81).fill('a').map(e => e / 20 - 2),
+        data: [
+          {
+            name: '政治',
+            value: new Array(81).fill('a').map(e => -e * (e - 80)),
+          },
+          {
+            name: '文化',
+            value: new Array(81).fill('a').map(e => -e * (e - 81) + 20),
+          },
+          {
+            name: '经济',
+            value: new Array(81).fill('a').map(e => -e * (e - 80) + 10),
+          },
+        ],
+      }}
+      />
     </div>
   );
 };
