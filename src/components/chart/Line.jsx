@@ -1,5 +1,6 @@
 import React from 'react';
 import * as d3 from 'd3';
+import { colors } from './config';
 
 export default class SvgMultipleLines extends React.Component {
   constructor(props) {
@@ -99,7 +100,7 @@ export default class SvgMultipleLines extends React.Component {
 
     const colors = d3.scaleOrdinal()
       .domain(['apples', 'bananas'])
-      .range(['red', 'blue', 'green']);
+      .range(colors);
 
     const graph = chart.selectAll('.graph')
       .data(this.state.data)
