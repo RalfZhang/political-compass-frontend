@@ -7,7 +7,7 @@ console.log('----------', config.colors);
 export default class SvgMultipleLines extends React.Component {
   constructor(props) {
     super(props);
-    const parseTime = d3.timeParse('%Y');
+    // const parseTime = d3.timeParse('%Y');
     this.state = {
       xAxisOld: [2013, 2014, 2015, 2016, 2017],
       dataOld: [
