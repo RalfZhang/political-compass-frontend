@@ -101,7 +101,7 @@ export default class SvgMultipleLines extends React.Component {
       .range([height, 0]);
 
     const colors = d3.scaleOrdinal()
-      .domain(['apples', 'bananas'])
+      .domain(this.state.dataOld.map(e => e.key))
       .range(config.colors);
 
     const graph = chart.selectAll('.graph')
@@ -137,7 +137,7 @@ export default class SvgMultipleLines extends React.Component {
       .attr('transform', `translate(0,${y(0) + 20})`);
 
     legendContainer.selectAll('rect')
-      .data(['apples', 'bananas'])
+      .data(this.state.dataOld.map(e => e.key))
       .enter()
       .append('rect')
       .attr('width', 15)
@@ -146,7 +146,7 @@ export default class SvgMultipleLines extends React.Component {
       .attr('fill', colors);
 
     legendContainer.selectAll('text')
-      .data(['apples', 'bananas'])
+      .data(this.state.dataOld.map(e => e.key))
       .enter()
       .append('text')
       .attr('x', (d, i) => i * 200 + 25)
