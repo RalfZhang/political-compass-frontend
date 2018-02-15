@@ -105,7 +105,7 @@ export default class SvgMultipleLines extends React.Component {
       .range(config.colors);
 
     const graph = chart.selectAll('.graph')
-      .data(this.state.data)
+      .data(this.state.dataOld)
       .enter()
       .append('g')
       .attr('class', 'graph');
