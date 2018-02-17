@@ -1,6 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 import * as config from './config';
+import { pipeProps } from './util';
 
 console.log('----------', config.colors);
 
@@ -10,7 +11,24 @@ export default class SvgMultipleLines extends React.Component {
     // const parseTime = d3.timeParse('%Y');
     this.state = {
       xAxisOld: [2013, 2014, 2015, 2016, 2017],
-      dataOld: [
+      dataOld: pipeProps(
+        [
+          {
+            name: '政治',
+            values: new Array(81).fill('a').map((i, e) => -e * (e - 80)),
+          },
+          {
+            name: '文化',
+            values: new Array(81).fill('a').map((i, e) => -e * (e - 81) + 20),
+          },
+          {
+            name: '经济',
+            values: new Array(81).fill('a').map((i, e) => -e * (e - 80) + 10),
+          },
+        ],
+        new Array(81).fill('a').map((i, e) => e / 20 - 2),
+      ),
+      dataOldd: [
         {
           key: 'apples',
           values: [
@@ -62,22 +80,23 @@ export default class SvgMultipleLines extends React.Component {
           ],
         },
       ],
-      xAxis: new Array(81).fill('a').map(e => e / 20 - 2),
+      xAxis: new Array(81).fill('a').map((i, e) => e / 20 - 2),
       data: [
         {
           name: '政治',
-          values: new Array(81).fill('a').map(e => -e * (e - 80)),
+          values: new Array(81).fill('a').map((i, e) => -e * (e - 80)),
         },
         {
           name: '文化',
-          values: new Array(81).fill('a').map(e => -e * (e - 81) + 20),
+          values: new Array(81).fill('a').map((i, e) => -e * (e - 81) + 20),
         },
         {
           name: '经济',
-          values: new Array(81).fill('a').map(e => -e * (e - 80) + 10),
+          values: new Array(81).fill('a').map((i, e) => -e * (e - 80) + 10),
         },
       ],
     };
+    console.log('old', this.state.dataOld);
   }
 
   componentDidMount() {
@@ -93,11 +112,11 @@ export default class SvgMultipleLines extends React.Component {
       .attr('transform', 'translate(100, 0)');
 
     const x = d3.scaleLinear()
-      .domain([2013, 2017]) // min max dates
+      .domain([-2, 2]) // min max dates
       .range([0, width]);
 
     const y = d3.scaleLinear()
-      .domain([0, 250]) // max value
+      .domain([0, 2500]) // max value
       .range([height, 0]);
 
     const colors = d3.scaleOrdinal()
@@ -117,7 +136,7 @@ export default class SvgMultipleLines extends React.Component {
       .style('stroke', d => colors(d.key))
       .attr('d', parentData => (d3.line()
         .curve(d3.curveBasis) // make points round, not sharp
-        .x(d => x(d.date))
+        .x(d => x(d.position))
         .y(d => y(d.value))
       )(parentData.values));
 
