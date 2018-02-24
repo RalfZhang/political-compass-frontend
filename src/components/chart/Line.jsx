@@ -20,23 +20,42 @@ export default class SvgMultipleLines extends React.Component {
 
   componentDidMount() {
     // TODO: add margins to display axis nicer
+    const lengthObj = {
+      legend: {
+        height: 30,
+      },
+      chart: {
+        height: 300, // 仅中心区域大小
+        width: 500, // 仅中心区域大小
+        pl: 40, // padding-left
+        pr: 10, // padding-right
+        pt: 0, // padding-top
+        pb: 50, // padding-bottom
+      },
+    };
 
-    const width = 700;
-    const height = 500;
+    const width = lengthObj.chart.width + lengthObj.chart.pl + lengthObj.chart.pr;
+    const height = lengthObj.legend.height + lengthObj.chart.height + lengthObj.chart.pt + lengthObj.chart.pb;
 
-    const chart = d3.select(this.chartRef)
-      .attr('width', width + 100)
-      .attr('height', height + 200) // 200 for legend
-      .append('g')
-      .attr('transform', 'translate(100, 0)');
+    const box = d3.select(this.chartRef)
+      .attr('width', width)
+      .attr('height', height); // 200 for legend
+
+    box.append('path')
+      .attr('d', `M0 0 H ${width} V ${height} H 0 Z`)
+      .attr('fill', 'transparent')
+      .attr('stroke', 'black');
+    const chart = box.append('g')
+      .attr('transform', `translate(${lengthObj.chart.pl}, 0)`);
+
 
     const x = d3.scaleLinear()
       .domain([-2, 2]) // min max dates
-      .range([0, width]);
+      .range([0, lengthObj.chart.width]);
 
     const y = d3.scaleLinear()
       .domain([0, 2500]) // max value
-      .range([height, 0]);
+      .range([lengthObj.chart.height, 0]);
 
     const colors = d3.scaleOrdinal()
       .domain(this.state.data.map(e => e.key))
