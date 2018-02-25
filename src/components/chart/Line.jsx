@@ -22,15 +22,15 @@ export default class SvgMultipleLines extends React.Component {
     // TODO: add margins to display axis nicer
     const lengthObj = {
       legend: {
-        height: 30,
+        height: 36,
       },
       chart: {
         height: 300, // 仅中心区域大小
         width: 500, // 仅中心区域大小
         pl: 40, // padding-left
         pr: 10, // padding-right
-        pt: 0, // padding-top
-        pb: 50, // padding-bottom
+        pt: 10, // padding-top
+        pb: 30, // padding-bottom
       },
     };
 
@@ -45,16 +45,16 @@ export default class SvgMultipleLines extends React.Component {
       .attr('d', `M0 0 H ${width} V ${height} H 0 Z`)
       .attr('fill', 'transparent')
       .attr('stroke', 'black');
-    const chart = box.append('g')
-      .attr('transform', `translate(${lengthObj.chart.pl}, 0)`);
 
+    const chart = box.append('g')
+      .attr('transform', `translate(${lengthObj.chart.pl}, ${lengthObj.legend.height})`);
 
     const x = d3.scaleLinear()
       .domain([-2, 2]) // min max dates
       .range([0, lengthObj.chart.width]);
 
     const y = d3.scaleLinear()
-      .domain([0, 2500]) // max value
+      .domain([0, 2000]) // max value
       .range([lengthObj.chart.height, 0]);
 
     const colors = d3.scaleOrdinal()
@@ -88,10 +88,10 @@ export default class SvgMultipleLines extends React.Component {
       .attr('transform', 'translate(0,0)')
       .call(d3.axisLeft(y));
 
-    const legendContainer = chart
+    const legendContainer = box
       .append('g')
       .attr('class', 'legend')
-      .attr('transform', `translate(0,${y(0) + 20})`);
+      .attr('transform', `translate(0,${lengthObj.chart.pt})`);
 
     legendContainer.selectAll('rect')
       .data(this.state.data.map(e => e.key))
