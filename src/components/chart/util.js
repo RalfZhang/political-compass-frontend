@@ -5,3 +5,10 @@ export const pipeProps = (d, axis) => d.map(e => ({
     value: v,
   })),
 }));
+
+export const getTextWidth = (text, fontSize = 14, fontFace) => {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  context.font = `${fontSize}px ${fontFace}`;
+  return context.measureText(text).width;
+};
