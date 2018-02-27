@@ -93,19 +93,19 @@ export default class SvgMultipleLines extends React.Component {
       .attr('class', 'legend')
       .attr('transform', `translate(0,${lengthObj.chart.pt})`);
 
-    legendContainer.selectAll('rect')
+    const legendG = legendContainer.selectAll('g')
       .data(this.state.data.map(e => e.key))
       .enter()
-      .append('rect')
+      .append('g')
+      .attr('x', '10');
+
+    legendG.append('rect')
       .attr('width', 15)
       .attr('height', 15)
       .attr('x', (d, i) => i * 200)
       .attr('fill', colors);
 
-    legendContainer.selectAll('text')
-      .data(this.state.data.map(e => e.key))
-      .enter()
-      .append('text')
+    legendG.append('text')
       .attr('x', (d, i) => i * 200 + 25)
       .attr('y', 12)
       .text(d => d);
