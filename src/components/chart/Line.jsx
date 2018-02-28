@@ -1,7 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 import * as config from './config';
-import { pipeProps } from './util';
+import { pipeProps, getTextWidth } from './util';
 
 console.log('----------', config.colors);
 
@@ -34,6 +34,9 @@ export default class SvgMultipleLines extends React.Component {
       },
     };
 
+
+    const legendTextArr = this.state.data.map(e => e.key);
+
     const width = lengthObj.chart.width + lengthObj.chart.pl + lengthObj.chart.pr;
     const height = lengthObj.legend.height + lengthObj.chart.height + lengthObj.chart.pt + lengthObj.chart.pb;
 
@@ -58,7 +61,7 @@ export default class SvgMultipleLines extends React.Component {
       .range([lengthObj.chart.height, 0]);
 
     const colors = d3.scaleOrdinal()
-      .domain(this.state.data.map(e => e.key))
+      .domain(legendTextArr)
       .range(config.colors);
 
     const graph = chart.selectAll('.graph')
@@ -94,19 +97,26 @@ export default class SvgMultipleLines extends React.Component {
       .attr('transform', `translate(0,${lengthObj.chart.pt})`);
 
     const legendG = legendContainer.selectAll('g')
-      .data(this.state.data.map(e => e.key))
+      .data(legendTextArr)
       .enter()
       .append('g')
       .attr('x', '10');
 
+
+    const legendWidth = 233;
+    // 居中时确定偏移量
+    const legendOffset = (lengthObj.chart.width - legendWidth) / 2 + lengthObj.chart.pl;
+    const legendIconWidth = 15;
+    const legendGap = 30;
+
     legendG.append('rect')
-      .attr('width', 15)
-      .attr('height', 15)
-      .attr('x', (d, i) => i * 200)
+      .attr('width', legendIconWidth)
+      .attr('height', legendIconWidth)
+      .attr('x', (d, i) => legendOffset + (getTextWidth(legendTextArr.slice(0, i).join(''))) + i * (legendIconWidth + legendGap))
       .attr('fill', colors);
 
     legendG.append('text')
-      .attr('x', (d, i) => i * 200 + 25)
+      .attr('x', (d, i) => legendOffset + (getTextWidth(legendTextArr.slice(0, i).join(''))) + (i + 1) * legendIconWidth + i * legendGap + 4)
       .attr('y', 12)
       .text(d => d);
   }
