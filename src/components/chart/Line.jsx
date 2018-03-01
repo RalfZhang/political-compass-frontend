@@ -103,11 +103,11 @@ export default class SvgMultipleLines extends React.Component {
       .attr('x', '10');
 
 
-    const legendWidth = 233;
-    // 居中时确定偏移量
-    const legendOffset = (lengthObj.chart.width - legendWidth) / 2 + lengthObj.chart.pl;
     const legendIconWidth = 15;
     const legendGap = 30;
+    const legendWidth = legendTextArr.length * (legendIconWidth + legendGap) + getTextWidth(legendTextArr.join('')) - legendGap;
+    // 居中时确定偏移量
+    const legendOffset = (lengthObj.chart.width - legendWidth) / 2 + lengthObj.chart.pl;
 
     legendG.append('rect')
       .attr('width', legendIconWidth)
