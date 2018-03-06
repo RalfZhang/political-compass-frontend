@@ -117,7 +117,7 @@ export default class SvgMultipleLines extends React.Component {
 
     legendG.append('text')
       .attr('x', (d, i) => legendOffset + (getTextWidth(legendTextArr.slice(0, i).join(''))) + (i + 1) * legendIconWidth + i * legendGap + 4)
-      .attr('y', 12)
+      .attr('y', 13)
       .text(d => d);
   }
 
