@@ -53,11 +53,12 @@ export default class SvgMultipleLines extends React.Component {
       .attr('transform', `translate(${lengthObj.chart.pl}, ${lengthObj.legend.height})`);
 
     const x = d3.scaleLinear()
-      .domain([-2, 2]) // min max dates
+      .domain([d3.min(this.state.data[0].values.map(e => e.position)),
+        d3.max(this.state.data[0].values.map(e => e.position))]) // min max dates
       .range([0, lengthObj.chart.width]);
 
     const y = d3.scaleLinear()
-      .domain([0, 2000]) // max value
+      .domain([0, d3.max(Array.prototype.concat.apply([], this.state.data.map(e => e.values.map(el => el.value))))]) // max value
       .range([lengthObj.chart.height, 0]);
 
     const colors = d3.scaleOrdinal()
